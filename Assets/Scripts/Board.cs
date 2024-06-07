@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
+using UnityEngine.Events;
 
 public class Board : MonoBehaviour
 {
@@ -9,6 +9,7 @@ public class Board : MonoBehaviour
     public TetrominoData[] tetrominoes;
     public Vector3Int spawnPosition;
     public Vector2Int boardSize = new Vector2Int(10, 20);
+    public UnityEvent lineClear;
 
     public RectInt Bounds
     {
@@ -100,6 +101,7 @@ public class Board : MonoBehaviour
             if (IsLineFull(row))
             {
                 LineClear(row);
+                lineClear.Invoke();
             }
             else
             {
